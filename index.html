@@ -187,8 +187,8 @@ body{
 <body>
 
 <div class="card">
-  <div class="logo">📐</div>
   <div class="brand">Maths Mahendra</div>
+  <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.45);text-align:center;margin-bottom:4px;letter-spacing:0.08em;text-transform:uppercase">Refer &amp; Earn</div>
   <div class="tagline">Learn Maths the smart way.<br>Join thousands of students already enrolled.</div>
 
   <!-- Form screen -->
@@ -217,12 +217,12 @@ body{
     <div class="footer">Maths Mahendra · Refer &amp; Earn Program</div>
   </div>
 
-  <!-- Success screen (shown after submit, before redirect) -->
+  <!-- Success screen (shown after submit) -->
   <div class="success-screen" id="success-screen">
     <div class="success-icon">✅</div>
     <div class="success-title">You're all set!</div>
-    <div class="success-sub">Your details have been saved.<br>Redirecting you to the app now…</div>
-    <div class="redirect-bar">⏳ Redirecting in a moment…</div>
+    <div class="success-sub">Your details have been saved successfully.<br>Tap below to download the Maths Mahendra app.</div>
+    <button class="btn" onclick="goToApp()" style="margin-top:8px">📲 Download the App →</button>
     <div class="footer" style="margin-top:16px">Maths Mahendra · Refer &amp; Earn Program</div>
   </div>
 
@@ -255,16 +255,8 @@ var isAndroid = /android/i.test(ua);
 var isIOS     = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
 var isMobile  = isAndroid || isIOS;
 
-// If no referral UID in URL — this is a direct visit, not a referral link
-// Just redirect to OneLink directly on mobile, show desktop msg on desktop
-if (!REF) {
-  if (isMobile) {
-    window.location.href = ONELINK;
-  } else {
-    show("desktop-msg");
-    hide("form-screen");
-  }
-}
+// Always show the form — student must enter name + mobile before any redirect
+// REF may or may not be present
 
 // ── SUBMIT ───────────────────────────────────────────────────
 function submitForm() {
@@ -312,16 +304,19 @@ function submitForm() {
 
 // ── REDIRECT ─────────────────────────────────────────────────
 function doRedirect() {
+  // Always show success screen with Download button — student taps to go
+  // This works on both mobile and desktop
+  hide("form-screen");
+  show("success-screen");
+}
+
+// Called when student taps Download button on success screen
+function goToApp() {
   if (isMobile) {
-    // Show success screen briefly then redirect
-    hide("form-screen");
-    show("success-screen");
-    setTimeout(function() {
-      window.location.href = ONELINK;
-    }, 1200);
+    window.location.href = ONELINK;
   } else {
-    // Desktop — show message, no redirect
-    hide("form-screen");
+    // Desktop — show desktop message
+    hide("success-screen");
     show("desktop-msg");
   }
 }
