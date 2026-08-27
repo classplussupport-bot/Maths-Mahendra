@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maths Mahendra — Join & Earn</title>
+<meta name="description" content="You've been invited to Maths Mahendra! Enter your details to get the app.">
+
+<!-- Prevent caching so lead is always tracked fresh -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(145deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:24px;
+  padding:36px 28px;
+  width:100%;
+  max-width:400px;
+  backdrop-filter:blur(20px);
+  box-shadow:0 24px 64px rgba(0,0,0,0.4);
+}
+
+.logo{
+  font-size:52px;
+  text-align:center;
+  margin-bottom:8px;
+}
+
+.brand{
+  font-size:22px;
+  font-weight:800;
+  color:#fff;
+  text-align:center;
+  margin-bottom:6px;
+  letter-spacing:-0.3px;
+}
+
+.tagline{
+  font-size:13px;
+  color:rgba(255,255,255,0.55);
+  text-align:center;
+  margin-bottom:28px;
+  line-height:1.5;
+}
+
+.invite-badge{
+  background:linear-gradient(135deg,rgba(99,102,241,0.3),rgba(168,85,247,0.3));
+  border:1px solid rgba(99,102,241,0.4);
+  border-radius:12px;
+  padding:12px 16px;
+  text-align:center;
+  margin-bottom:24px;
+  font-size:13px;
+  color:rgba(255,255,255,0.85);
+  line-height:1.5;
+}
+
+.invite-badge strong{
+  color:#a78bfa;
+  font-weight:700;
+}
+
+.field{
+  margin-bottom:16px;
+}
+
+.field label{
+  display:block;
+  font-size:11px;
+  font-weight:600;
+  color:rgba(255,255,255,0.5);
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  margin-bottom:7px;
+}
+
+.field input{
+  width:100%;
+  background:rgba(255,255,255,0.07);
+  border:1.5px solid rgba(255,255,255,0.12);
+  border-radius:12px;
+  padding:13px 16px;
+  font-size:15px;
+  color:#fff;
+  outline:none;
+  transition:border-color 0.2s;
+  -webkit-appearance:none;
+}
+
+.field input:focus{
+  border-color:rgba(99,102,241,0.7);
+  background:rgba(255,255,255,0.1);
+}
+
+.field input::placeholder{color:rgba(255,255,255,0.25)}
+
+.btn{
+  width:100%;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff;
+  border:none;
+  border-radius:14px;
+  padding:15px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:6px;
+  transition:opacity 0.2s,transform 0.1s;
+  letter-spacing:0.2px;
+  box-shadow:0 8px 24px rgba(99,102,241,0.35);
+}
+
+.btn:hover{opacity:0.9}
+.btn:active{transform:scale(0.98)}
+.btn:disabled{opacity:0.6;cursor:not-allowed}
+
+.err{
+  font-size:12px;
+  color:#f87171;
+  font-weight:600;
+  min-height:18px;
+  margin-top:10px;
+  text-align:center;
+}
+
+.success-screen{
+  display:none;
+  text-align:center;
+  padding:10px 0;
+}
+
+.success-icon{font-size:56px;margin-bottom:12px}
+.success-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px}
+.success-sub{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:20px}
+
+.redirect-bar{
+  background:rgba(255,255,255,0.06);
+  border-radius:10px;
+  padding:12px 16px;
+  font-size:12px;
+  color:rgba(255,255,255,0.5);
+  text-align:center;
+}
+
+.desktop-msg{
+  display:none;
+  text-align:center;
+  padding:10px 0;
+}
+
+.desktop-icon{font-size:48px;margin-bottom:14px}
+.desktop-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px}
+.desktop-sub{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6}
+
+.footer{
+  margin-top:24px;
+  font-size:11px;
+  color:rgba(255,255,255,0.2);
+  text-align:center;
+}
+
+/* Spinner */
+.spin{
+  display:inline-block;width:16px;height:16px;
+  border:2.5px solid rgba(255,255,255,0.2);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:sp 0.6s linear infinite;
+  vertical-align:middle;margin-right:6px;
+}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">📐</div>
+  <div class="brand">Maths Mahendra</div>
+  <div class="tagline">Learn Maths the smart way.<br>Join thousands of students already enrolled.</div>
+
+  <!-- Form screen -->
+  <div id="form-screen">
+    <div class="invite-badge">
+      🎉 You've been <strong>personally invited!</strong><br>
+      Fill in your details to get the app &amp; start learning.
+    </div>
+
+    <div class="field">
+      <label>Your Full Name</label>
+      <input type="text" id="inp-name" placeholder="e.g. Rahul Sharma" autocomplete="name"
+        onkeydown="if(event.key==='Enter')g('inp-mobile').focus()">
+    </div>
+
+    <div class="field">
+      <label>Mobile Number</label>
+      <input type="tel" id="inp-mobile" placeholder="10-digit mobile number"
+        maxlength="10" inputmode="numeric"
+        onkeydown="if(event.key==='Enter')submitForm()">
+    </div>
+
+    <div class="err" id="err-msg"></div>
+    <button class="btn" id="sub-btn" onclick="submitForm()">Get the App →</button>
+
+    <div class="footer">Maths Mahendra · Refer &amp; Earn Program</div>
+  </div>
+
+  <!-- Success screen (shown after submit, before redirect) -->
+  <div class="success-screen" id="success-screen">
+    <div class="success-icon">✅</div>
+    <div class="success-title">You're all set!</div>
+    <div class="success-sub">Your details have been saved.<br>Redirecting you to the app now…</div>
+    <div class="redirect-bar">⏳ Redirecting in a moment…</div>
+    <div class="footer" style="margin-top:16px">Maths Mahendra · Refer &amp; Earn Program</div>
+  </div>
+
+  <!-- Desktop message (shown if opened on desktop) -->
+  <div class="desktop-msg" id="desktop-msg">
+    <div class="desktop-icon">📱</div>
+    <div class="desktop-title">Open on your mobile</div>
+    <div class="desktop-sub">
+      This link is meant for your phone.<br>
+      Please open it on your Android or iOS device<br>
+      to download the Maths Mahendra app.
+    </div>
+    <div class="footer" style="margin-top:20px">Maths Mahendra · Refer &amp; Earn Program</div>
+  </div>
+</div>
+
+<script>
+// ── CONFIG ────────────────────────────────────────────────────
+var GAS_URL  = "https://script.google.com/macros/s/AKfycbzDNj_Argrk8Gt6KY2Xt-yO84n2l1A7AykCa2N-jNbgkoaCgSTMDfz5ZjGa3YSYyj-c/exec";
+var ORG      = "MATHSMAHENDRA";
+var ONELINK  = "https://onelink.to/fuxz63";
+// ─────────────────────────────────────────────────────────────
+
+// Get referrer UID from URL — ?ref=UID1234
+var REF = (new URLSearchParams(location.search).get("ref") || "").trim();
+
+// Detect device on load
+var ua        = navigator.userAgent || navigator.vendor || "";
+var isAndroid = /android/i.test(ua);
+var isIOS     = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+var isMobile  = isAndroid || isIOS;
+
+// If no referral UID in URL — this is a direct visit, not a referral link
+// Just redirect to OneLink directly on mobile, show desktop msg on desktop
+if (!REF) {
+  if (isMobile) {
+    window.location.href = ONELINK;
+  } else {
+    show("desktop-msg");
+    hide("form-screen");
+  }
+}
+
+// ── SUBMIT ───────────────────────────────────────────────────
+function submitForm() {
+  var name = document.getElementById("inp-name").value.trim();
+  var mob  = document.getElementById("inp-mobile").value.replace(/\D/g,"").slice(-10);
+  var err  = document.getElementById("err-msg");
+  err.textContent = "";
+
+  if (!name || name.length < 2) { err.textContent = "Please enter your full name"; return; }
+  if (mob.length !== 10)        { err.textContent = "Enter a valid 10-digit mobile number"; return; }
+
+  var btn = document.getElementById("sub-btn");
+  btn.disabled = true;
+  btn.innerHTML = "<span class='spin'></span>Saving…";
+
+  // Get SID for this org first, then addLead
+  apiFetch(GAS_URL + "?action=getClient&org=" + ORG, function(r) {
+    if (!r.ok || !r.data || !r.data.SheetID) {
+      // If getClient fails — still redirect (don't block student)
+      doRedirect();
+      return;
+    }
+    var sid = r.data.SheetID;
+
+    // Record lead in sheet
+    var url = GAS_URL
+      + "?action=addLead"
+      + "&sheetId="      + encodeURIComponent(sid)
+      + "&referrerUID="  + encodeURIComponent(REF)
+      + "&leadName="     + encodeURIComponent(name)
+      + "&leadMobile="   + encodeURIComponent(mob);
+
+    apiFetch(url, function(res) {
+      // Lead saved (or duplicate) — redirect either way
+      doRedirect();
+    }, function() {
+      // Network error on addLead — still redirect, don't block student
+      doRedirect();
+    });
+  }, function() {
+    // Network error on getClient — still redirect
+    doRedirect();
+  });
+}
+
+// ── REDIRECT ─────────────────────────────────────────────────
+function doRedirect() {
+  if (isMobile) {
+    // Show success screen briefly then redirect
+    hide("form-screen");
+    show("success-screen");
+    setTimeout(function() {
+      window.location.href = ONELINK;
+    }, 1200);
+  } else {
+    // Desktop — show message, no redirect
+    hide("form-screen");
+    show("desktop-msg");
+  }
+}
+
+// ── API FETCH ─────────────────────────────────────────────────
+function apiFetch(url, cb, eb) {
+  var cb_name = "_cb_" + Date.now() + "_" + Math.random().toString(36).slice(2);
+  window[cb_name] = function(data) {
+    delete window[cb_name];
+    try { document.head.removeChild(s); } catch(e) {}
+    cb(data);
+  };
+  var s = document.createElement("script");
+  s.onerror = function() {
+    delete window[cb_name];
+    try { document.head.removeChild(s); } catch(e) {}
+    if (eb) eb();
+  };
+  s.src = url + (url.indexOf("?") >= 0 ? "&" : "?") + "callback=" + cb_name;
+  document.head.appendChild(s);
+}
+
+// ── HELPERS ───────────────────────────────────────────────────
+function show(id) { document.getElementById(id).style.display = "block"; }
+function hide(id) { document.getElementById(id).style.display = "none";  }
+</script>
+</body>
+</html>
